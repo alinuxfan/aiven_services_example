@@ -1,4 +1,5 @@
-avn
+aiven-client
 argparse
+kafka-python
 json
 faker
