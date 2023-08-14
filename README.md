@@ -49,9 +49,9 @@ avn service get $KAFKA_INSTANCE_NAME \
 avn service wait $KAFKA_INSTANCE_NAME
 ```
 
-9. Create Topic for service in UI or CLI
+#### 3. Create Topic for service in UI or CLI
 
-10. Use Service Name and cert directory for the arguments and run
+#### 4. Use Service Name and cert directory for the arguments and run
 
 ```
 python iot_faker.py \                                           
@@ -61,15 +61,15 @@ python iot_faker.py \
   --topic-name iot
 ```
 
-11. Create Demo Flink Environment with UI or CLI. If UI, follow [Flink getting started guide](https://docs.aiven.io/docs/products/flink/getting-started)
+#### 5. Create Demo Flink Environment with UI or CLI. If UI, follow [Flink getting started guide](https://docs.aiven.io/docs/products/flink/getting-started)
 
 `avn service create demoflink -t flink --plan business-4`
 
-12. Enable Flink Data Service Integration with Kafka
+#### 6. Enable Flink Data Service Integration with Kafka
 
-13. Flink - _Create New Application_ in the *Applications* tab
+#### 7. Flink - _Create New Application_ in the *Applications* tab
 
-14. Flink - Create New Source Table  
+#### 8. Flink - Create New Source Table  
 ```
 CREATE TABLE iot (
     device VARCHAR,
@@ -87,7 +87,7 @@ CREATE TABLE iot (
 )
 ```
 
-15. Create Sink Table
+#### 9. Create Sink Table
 ```
 CREATE TABLE temperatures (
     device VARCHAR,
@@ -105,7 +105,7 @@ CREATE TABLE temperatures (
 )
 ```
 
-16. Create the SQL statement that transforms the data from the source stream.
+#### 10. Create the SQL statement that transforms the data from the source stream.
 ```
 INSERT INTO temperatures
 SELECT device, deviceValue, dateTime, RAND() AS jitter
@@ -113,6 +113,6 @@ FROM iot
 WHERE deviceParameter = 'Temperature'
 ```
 
-17. Create Deployment of Flink Application
+#### 11. Create Deployment of Flink Application
 
-18. Use UI to verify data in the Kafka sink Topic
+#### 12. Use UI to verify data in the Kafka sink Topic
